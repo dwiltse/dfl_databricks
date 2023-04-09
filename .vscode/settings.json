@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "DuckDB",
+            "name": "testconnect",
+            "database": "C:\\Users\\Wiltse Family\\Documents\\databricks\\dfl\\data\\weekly\\week_1.parquet"
+        }
+    ]
+}
