@@ -9,3 +9,8 @@ def Fibonacci(n)
     end
 end
 
+
+## Loop through dataframe and create parquet files based on field
+
+datafrfame 
+
