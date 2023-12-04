@@ -1,12 +1,12 @@
 -- Databricks notebook source
--- MAGIC %md #### Load Bronze data into dfl.nfl workspace
--- MAGIC
+-- MAGIC %md
+-- MAGIC ##### Load Bronze data into dfl.nfl workspace
 -- MAGIC ###### SOURCE:
 -- MAGIC ###### abfss://root@sadfldatabricks.dfs.core.windows.net/raw/nfl/
 
 -- COMMAND ----------
 
-CREATE  STREAMING LIVE TABLE bronze_weekly_dlt(
+CREATE  STREAMING LIVE TABLE bronze_weekly(
   CONSTRAINT correct_schema EXPECT (_rescued_data IS NULL)
 )
 COMMENT "raw weekly data from parquet export of AFC and NFC teams"
@@ -75,6 +75,6 @@ tot_passing_tds,
 tot_int,
 tot_qb_sacks,
 team_logo_wikipedia as team_logo
-from live.gold_teams_dlt
+from dfl.nfl.gold_teams
 inner join qb_agg_stats using (team_abbr)
 
