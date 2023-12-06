@@ -79,12 +79,12 @@ select * from dfl.nfl.teams
 -- MAGIC %python
 -- MAGIC # Import functions
 -- MAGIC from pyspark.sql.functions import input_file_name, current_timestamp
--- MAGIC 
+-- MAGIC
 -- MAGIC # Define variables used in code below
 -- MAGIC file_path = "abfss://root@sadfldatabricks.dfs.core.windows.net/raw/nfl/teams"
 -- MAGIC table_name = "teams"
 -- MAGIC checkpoint_path = "abfss://root@sadfldatabricks.dfs.core.windows.net/raw/_checkpoint/nfl/teams"
--- MAGIC 
+-- MAGIC
 -- MAGIC # Configure Auto Loader to ingest JSON data to a Delta table
 -- MAGIC (spark.readStream
 -- MAGIC   .format("cloudFiles")
@@ -101,7 +101,7 @@ select * from dfl.nfl.teams
 
 -- MAGIC %python
 -- MAGIC checkpoint_path = "abfss://root@sadfldatabricks.dfs.core.windows.net/raw/nfl/_checkpoint/teams/"
--- MAGIC 
+-- MAGIC
 -- MAGIC (spark.readStream
 -- MAGIC   .format("cloudFiles")
 -- MAGIC   .option("cloudFiles.format", "csv")
@@ -134,9 +134,9 @@ order by cnt desc
 
 -- MAGIC %python
 -- MAGIC checkpoint_path = "abfss://dfl-unity@sadfldatabricks.dfs.core.windows.net/7f0f1906-f3b3-4e33-8c20-7b2e7f4cd78a/_checkpoint/teams/"
--- MAGIC 
+-- MAGIC
 -- MAGIC ##"abfss://dfl-unity@sadfldatabricks.dfs.core.windows.net/_checkpoint/teams"
--- MAGIC 
+-- MAGIC
 -- MAGIC (spark.readStream
 -- MAGIC   .format("cloudFiles")
 -- MAGIC   .option("cloudFiles.format", "csv")
@@ -152,18 +152,18 @@ order by cnt desc
 
 -- MAGIC %python
 -- MAGIC from python.sql.types import DoubleTYpe, IntegerType, StringType, StructType, StructField
--- MAGIC 
+-- MAGIC
 -- MAGIC # Define variables used in code below
 -- MAGIC file_path = "/databricks-datasets/songs/data-001/"
 -- MAGIC table_name = "dfl.nfl.teams"
 -- MAGIC checkpoint_path = "<checkpoint-path>"
--- MAGIC 
+-- MAGIC
 -- MAGIC # For purposes of this example, clear out data from previous runs. Because Auto Loader
 -- MAGIC # is intended for incremental loading, in production applications you normally won't drop
 -- MAGIC # target tables and checkpoints between runs.
 -- MAGIC spark.sql(f"DROP TABLE IF EXISTS {table_name}")
 -- MAGIC dbutils.fs.rm(checkpoint_path, True)
--- MAGIC 
+-- MAGIC
 -- MAGIC schema = StructType(
 -- MAGIC   [
 -- MAGIC     StructField("artist_id", StringType(), True),
@@ -188,7 +188,7 @@ order by cnt desc
 -- MAGIC     StructField("partial_sequence", IntegerType(), True)
 -- MAGIC   ]
 -- MAGIC )
--- MAGIC 
+-- MAGIC
 -- MAGIC (spark.readStream
 -- MAGIC   .format("cloudFiles")
 -- MAGIC   .schema(schema)
@@ -199,3 +199,4 @@ order by cnt desc
 -- MAGIC   .option("checkpointLocation", checkpoint_path)
 -- MAGIC   .trigger(availableNow=True)
 -- MAGIC   .toTable(table_name))
+-- MAGIC
