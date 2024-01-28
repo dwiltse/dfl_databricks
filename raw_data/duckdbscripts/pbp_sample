@@ -1,0 +1,3 @@
+select * from "C:\Users\Wiltse Family\Documents\databricks\dfl_raw_scripts_output\pbp\week_1_2022.parquet"
+where week = 1
+limit 20
