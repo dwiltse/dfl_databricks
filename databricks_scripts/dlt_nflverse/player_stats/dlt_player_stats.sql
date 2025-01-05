@@ -6,9 +6,7 @@
 
 -- COMMAND ----------
 
-CREATE STREAMING LIVE TABLE bronze_player_stats(
-    -- Set multi field primary key consisting of game_id and play_id
-    CONSTRAINT pk_game_player_ids PRIMARY KEY (player_id, season, week, season_type)),
+CREATE STREAMING TABLE bronze_player_stats(
     CONSTRAINT correct_schema EXPECT (_rescued_data IS NULL)
 )
 COMMENT "raw weekly data from parquet export of AFC and NFC teams"
